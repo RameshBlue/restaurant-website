@@ -9,10 +9,10 @@ import { BrowserRouter } from 'react-router-dom';
 import NavbarProvider from './context/NavbarContext';
 
 const breakpoints = {
-  sm: '320px',
-  md: '768px',
-  lg: '960px',
-  xl: '1200px',
+  'sm': '450px',
+  'md': '750px',
+  'lg': '960px',
+  'xl': '1200px',
   '2xl': '1536px',
 }
 

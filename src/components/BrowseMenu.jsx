@@ -82,7 +82,7 @@ function BrowseMenu({ showTitle, showFullmenuTab }) {
 
     return (
         <Center animation='fade-out 1s ease-in-out' flexDirection='column' p='100px 3%'>
-            <Center flexDirection='column' w='500px' textAlign='center' mb='30px'>
+            <Center flexDirection='column' w={{base:'80%', md:'500px'}} textAlign='center' mb='30px'>
                 {
                     showTitle && <>
                         <Heading size='3xl' color='#35b8be' mb='20px'>Browse our menu</Heading>
@@ -92,14 +92,14 @@ function BrowseMenu({ showTitle, showFullmenuTab }) {
                     </>
                 }
             </Center>
-            <SimpleGrid columns={{ base: '2', md: `${showFullmenuTab? '4' : '3'}` }} spacing={{ base: '30px', md: '60px' }}>
+            <SimpleGrid columns={{ base: '1', sm: '2', md: `${showFullmenuTab? '4' : '3'}` }} spacing={{ base: '30px', md: '60px' }}>
                 <Tabs tabs={showFullmenuTab ? ["Full Menu", "Burgers", "Sides", "Drinks"] : ["Burgers", "Sides", "Drinks"]} tabWidth='150px' SetCurrentTab={(tab) => {
                     setSelectedItem(tab);
                     Fade();
                 }} />
             </SimpleGrid>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: itemFade.opacity }} transition={{ duration: itemFade.duration }}>
-                <SimpleGrid columns={{ base: '1', lg: '2' }} maxWidth='1200px' mt='50px' spacing='30px'>
+                <SimpleGrid columns={{ base: '1', sm: '2', md: '1', lg: '2' }} maxWidth='1200px' mt='50px' spacing='30px'>
                     {
                         DisplayItems()
                     }

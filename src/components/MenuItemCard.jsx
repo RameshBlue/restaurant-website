@@ -14,8 +14,8 @@ function MenuItemCard(props) {
     const [quantity, setQuantity] = useState(0);
 
     return (
-        <Flex p='30px' direction='row' bgColor='white' shadow='md' gap='30px' cursor='pointer' borderRadius='10px' border='1px solid' borderColor='blackAlpha.100'>
-            <Image boxSize='130px' src={props.image} borderRadius='15px' />
+        <Flex p='30px' direction={{base:'column', md:'row'}} bgColor='white' shadow='md' gap='30px' cursor='pointer' borderRadius='10px' border='1px solid' borderColor='blackAlpha.100'>
+            <Image boxSize={{ base:'100%' , md:'130px'}} src={props.image} borderRadius='15px' />
             <Flex direction='column' gap='15px'>
                 <Flex direction='row' justify='space-between'>
                     <Heading size='md'>{props.title}</Heading>

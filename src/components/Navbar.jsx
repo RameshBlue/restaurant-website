@@ -15,6 +15,7 @@ import { motion } from 'framer-motion'
 function Navbar() {
 
     const [isNavbarDropdownOpen, setIsNavbarDropdownOpen] = useState(false);
+    const [hideNavbar, setHideNavbar] = useState(true);
 
     const { navbarLinkIndex, setNavbarLinkIndex, cartItems, GetTotalQuantityInCart, GetTotalPriceInCart } = useContext(NavbarContext);
 
@@ -93,14 +94,22 @@ function Navbar() {
                         </Button>
                         <ChakraButton h='100%' w='50px' display={{ base: 'block', md: 'none' }} onClick={() => {
                             setIsNavbarDropdownOpen(!isNavbarDropdownOpen);
+                            if (!isNavbarDropdownOpen) {
+                                setHideNavbar(false);
+                            }else{
+                                setTimeout(() => {
+                                    setHideNavbar(true);
+                                }, 500);
+                            }
                         }}>
                             <GiHamburgerMenu />
                         </ChakraButton>
                     </HStack>
                 </Flex>
 
-                <motion.div animate={{x: isNavbarDropdownOpen ? 0 : '100%'}} transition= {{duration:0.35}} style={{position:'absolute', left:'0', top:'0', width:'100%', marginTop:'90px'}}>
-                    <VStack spacing={5} pb={5} bgColor='white' boxShadow='lg'>
+                <motion.div animate={{x: isNavbarDropdownOpen ? 0 : '100%'}} transition= {{duration:0.35}}
+                style={{position:'absolute', left:'0', top:'0', width:'100%', marginTop:'90px'}}>
+                    <VStack display={hideNavbar ? 'none' : 'flex'} spacing={5} pb={5} bgColor='white' boxShadow='lg'>
                         {
                             RenderDropdownLinks()
                         }

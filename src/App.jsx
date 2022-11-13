@@ -53,6 +53,7 @@ const TopOrderMessage = styled.div`
   color: white;
   position: relative;
   background-color: #35b8be;
+  width: 100%;
 
   .order-link{
     font-weight: 500;

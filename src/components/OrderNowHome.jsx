@@ -18,7 +18,7 @@ function OrderNowHome() {
                     <Heading size='3xl' color='#27888d' w='85%' >Support <span style={{ color: 'white' }}>good food
                         and local business.</span>
                     </Heading>
-                    <Button as={Link} to='/order' style={{ backgroundColor: 'white', color: '#27888d', borderRadius: '5px', width: '200px' }} onclick={()=>{setNavbarLinkIndex(1)}}>Order Now</Button>
+                    <Button as={Link} to='/order' style={{ backgroundColor: 'white', color: '#27888d', borderRadius: '5px', width: '200px' }} onClick={()=>{setNavbarLinkIndex(1)}}>Order Now</Button>
                 </Flex>
             </Flex>
         </Flex>

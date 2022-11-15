@@ -12,6 +12,8 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
+let navBarTimeOut = null;
+
 function Navbar() {
 
     const [isNavbarDropdownOpen, setIsNavbarDropdownOpen] = useState(false);
@@ -64,9 +66,27 @@ function Navbar() {
                 <Box as={Link} key={index} to={item.path} style={{
                     color: `${navbarLinkIndex === index ? colors.blue : 'black'}`,
                     fontWeight: '500'
-                }} onClick={() => { setNavbarLinkIndex(index); setIsNavbarDropdownOpen(false) }}>{item.name}</Box>
+                }} onClick={() => { 
+                    setNavbarLinkIndex(index); 
+                    setIsNavbarDropdownOpen(false);
+                    HandleHideNavBar();
+                 }}>{item.name}</Box>
             )
         })
+    }
+
+    const HandleHideNavBar = ()=> {
+        if (!isNavbarDropdownOpen) {
+            setHideNavbar(false);
+        }else{
+            if (navBarTimeOut != null) {
+                clearTimeout(navBarTimeOut);
+            }
+           navBarTimeOut = setTimeout(() => {
+                setHideNavbar(true);
+                navBarTimeOut = null;
+            }, 350);
+        }
     }
 
     useEffect(() => {
@@ -77,7 +97,7 @@ function Navbar() {
 
     return (
         <>
-            <Center pos='relative' bgColor='white' p='20px 3%'>
+            <Center pos='relative' bgColor='white' p='20px 6%'>
                 <Flex direction='row' justify="space-between" w='1200px' >
                     <Link to='/'>
                         <Image w='40px' cursor='pointer' src="Assets/Logo.svg" alt="logo" onClick={() => { setNavbarLinkIndex(0) }} />
@@ -94,22 +114,16 @@ function Navbar() {
                         </Button>
                         <ChakraButton h='100%' w='50px' display={{ base: 'block', md: 'none' }} onClick={() => {
                             setIsNavbarDropdownOpen(!isNavbarDropdownOpen);
-                            if (!isNavbarDropdownOpen) {
-                                setHideNavbar(false);
-                            }else{
-                                setTimeout(() => {
-                                    setHideNavbar(true);
-                                }, 500);
-                            }
+                            HandleHideNavBar();
                         }}>
                             <GiHamburgerMenu />
                         </ChakraButton>
                     </HStack>
                 </Flex>
 
-                <motion.div animate={{x: isNavbarDropdownOpen ? 0 : '100%'}} transition= {{duration:0.35}}
-                style={{position:'absolute', left:'0', top:'0', width:'100%', marginTop:'90px'}}>
-                    <VStack display={hideNavbar ? 'none' : 'flex'} spacing={5} pb={5} bgColor='white' boxShadow='lg'>
+                <motion.div animate={{scaleY: isNavbarDropdownOpen ? 1 : 0}} transition= {{duration:0.35}} 
+                style={{position:'absolute', left:'0', top:'0', width:'100%', marginTop:'90px', transformOrigin:'top center'}}>
+                    <VStack display={{base: hideNavbar ? 'none' : 'flex', md: 'none' }} spacing={5} pb={5} bgColor='white' boxShadow='lg' >
                         {
                             RenderDropdownLinks()
                         }

@@ -11,13 +11,13 @@ function HeroBanner() {
     const {setNavbarLinkIndex} = useContext(NavbarContext);
 
     return (
-        <Flex bgImage="url('Assets/HeroBannerBg.svg')" bgPosition='100% 0' bgRepeat='no-repeat' justify='center' align='center' p='100px 6%'>
+        <Flex bgImage="url('Assets/HeroBannerBg.svg')" bgPosition='top right' bgRepeat='no-repeat' justify='center' align='center' p='100px 6%'>
 
-            <Flex direction={{base:'column', lg:'row'}} justify='center' align='center' gap='60px' maxW='1200px'>
+            <Flex direction={{base:'column', lg:'row'}} justify='center' align='center' w='90%' gap='60px' maxW='1200px'>
 
                 <Flex direction='column' w={{base:'75%',lg:'50%'}} mt='80px' align={{base:'center', lg:'flex-start'}} textAlign={{base:'center', lg:'initial'}}>
 
-                    <Heading animation='move-right 1s ease-in-out, fade-out 1s ease-in-out' size='3xl' mb='30px'>Beautiful food & takeaway,<span style={{color:'#35b8be'}}>delivered</span> to your door.</Heading>
+                    <Heading animation='move-right 1s ease-in-out, fade-out 1s ease-in-out' size='3xl' mb='30px'>Beautiful food & takeaway,<span style={{color:'#35b8be'}}> delivered</span> to your door.</Heading>
 
                     <Text animation='move-right 1.15s ease-in-out, fade-out 1.15s ease-in-out' fontSize='18px' mb='50px' color='gray.600'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500.</Text>
 
@@ -31,7 +31,7 @@ function HeroBanner() {
 
                 </Flex>
 
-                <Image animation='fade-out 2s ease-in-out, scale 2s ease-in-out' src='Assets/HeroImage.png' pt='50px' boxSize={{base:'100%', md: '80%',lg:'50%'}} ml='20px' loading='lazy' />
+                <Image animation='fade-out 2s ease-in-out, scale 2s ease-in-out' src='Assets/HeroImage.png' pt='50px' boxSize={{base:'90%', md: '80%',lg:'50%'}} ml='20px' loading='lazy' />
 
             </Flex>
         </Flex>

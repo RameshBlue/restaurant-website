@@ -19,6 +19,14 @@ body {
   color: black
 }
 
+input{
+  border: 1px solid rgba(128, 128, 128, 0.454);
+}
+
+input:focus{
+  outline: 1px solid rgba(106, 190, 255, 0.733);
+}
+
 @keyframes fade-out{
   0%{
     opacity: 0;

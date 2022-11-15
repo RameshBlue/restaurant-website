@@ -11,7 +11,6 @@ import emailjs from 'emailjs-com';
 function Contact() {
 
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
     const [message, setMessage] = useState('')
 
     const [isFieldsFilled, setisFieldsFilled] = useState(false)
@@ -19,29 +18,31 @@ function Contact() {
     const toast = useToast();
 
     useEffect(()=>{
-        if (name.length!==0 && email.length!==0 && message.length!==0) {
+        if (name.length!==0 && message.length!==0) {
             setisFieldsFilled(true);
         }else{
             setisFieldsFilled(false)
         }    
-    },[name, message, email])
+    },[name, message])
 
-    const SendEmail = ()=>{
-        emailjs.send("service_g3plejg","template_8w4r2kd",{
-            from_name: name,
-            to_name: 'Chomp',
-            message: message
-        },'FPN7tEdahc_qW-vjA').then((result)=>{
-            toast({
-                title:'Success',
-                description: 'Message sent',
-                status: 'success',
-                duration: 2000,
-                isClosable: true,
-            })
-        },(err)=>{
-            console.log(err.text);
-        })
+    const SendEmail = (evt)=>{
+        // emailjs.send("service_g3plejg","template_8w4r2kd",{
+        //     from_name: name,
+        //     to_name: 'Chomp',
+        //     message: message
+        // },'FPN7tEdahc_qW-vjA').then((result)=>{
+        //     toast({
+        //         title:'Success',
+        //         description: 'Message sent',
+        //         status: 'success',
+        //         duration: 2000,
+        //         isClosable: true,
+        //     })
+        // },(err)=>{
+        //     console.log(err.text);
+        // })
+        evt.preventDefault();
+        window.location = `mailto:rameshkrishnan109@gmail.com?subject=Mail from ${name}&body=${message}`;
     }
 
     return (
@@ -60,15 +61,6 @@ function Contact() {
                                 setName(e.target.value);
                             }} required/>
                         </InputGroup>
-                        <InputGroup>
-                            <InputLeftElement
-                                pointerEvents='none'
-                                children={<MdEmail />}
-                            />
-                            <Input type='text' placeholder='Email' onChange={(e)=>{
-                                setEmail(e.target.value);
-                            }} required/>
-                        </InputGroup>
                         <Textarea placeholder='Message' onChange={(e)=>{
                                 setMessage(e.target.value);
                             }} required/>
@@ -76,9 +68,9 @@ function Contact() {
                             padding: '10px',
                             borderRadius: '5px',
                             fontSize: '16px',
-                        }} onClick={()=>{
+                        }} onClick={(evt)=>{
                             if (isFieldsFilled) {
-                                SendEmail();
+                                SendEmail(evt);
                             }else{
                                 toast({
                                     title:'Error',

@@ -99,7 +99,7 @@ function BrowseMenu({ showTitle, showFullmenuTab }) {
                 }} />
             </SimpleGrid>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: itemFade.opacity }} transition={{ duration: itemFade.duration }}>
-                <SimpleGrid columns={{ base: '1', sm: '2', md: '1', lg: '2' }} maxWidth='1200px' mt='50px' spacing='30px'>
+                <SimpleGrid columns={{ base: '1', sm: '2', md: '1', lg: '2' }} px={{base:'5%',sm:'0'}} maxWidth='1200px' mt='50px' spacing='30px'>
                     {
                         DisplayItems()
                     }

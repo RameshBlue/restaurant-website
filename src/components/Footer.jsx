@@ -4,7 +4,7 @@ import { Button } from '../styles/Button'
 
 function Footer() {
     return (
-        <Flex justify='center' pos='relative' bgColor='#35b7be12' h={{base:'700px', lg:'600px'}} p='0 3%'>
+        <Flex justify='center' pos='relative' bgColor='#35b7be12' h={{base:'100%', lg:'600px'}} p='0 3%'>
             <Image pos='absolute' left='0' bottom ='0' w='600px' src='Assets/OrderNowHomeImage2.svg' opacity='0.1' />
             <Flex direction={{base:'column', lg:'row'}} maxW='1200px' w='100%' pl='3%' mt='150px' justify='space-between'>
                 <Flex direction='column' gap='20px' w='90%' maxW='350px'>

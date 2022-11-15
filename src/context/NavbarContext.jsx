@@ -55,7 +55,6 @@ function NavbarProvider({children}) {
         const index = arr.findIndex((eachItem)=> { return eachItem.name === item.name});
         if (index !== -1) {
             arr[index].quantity = item.quantity;
-            console.log("quantity updated");
             setCartItems(arr);
         }
     }
@@ -79,14 +78,12 @@ function NavbarProvider({children}) {
     }
 
     const GetTotalPriceInCart = ()=>{
-        console.log("total price")
         let total = 0;
         cartItems.forEach((item)=>{
             total += (item.price * item.quantity);
         })
         return total.toFixed(2);
     }
-    console.log("navbar context end")
   return (
     <NavbarContext.Provider value={{navbarLinkIndex, setNavbarLinkIndex, cartItems, AddCartItem, RemoveCartItem, SetExistingItemQuantity,  GetTotalQuantityInCart, GetTotalPriceInCart}}>
         {children}

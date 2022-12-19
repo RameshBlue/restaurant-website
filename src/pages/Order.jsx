@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Flex, Center, Image, Heading, Text, SimpleGrid } from '@chakra-ui/react'
 import { Button } from '../styles/Button'
 import BrowseMenu from '../components/BrowseMenu'
+import { useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
 
 function Order() {
+    const { setNavbarLinkIndex } = useContext(NavbarContext);
+
+    useEffect(()=>{
+        setNavbarLinkIndex(1);
+    },[])
     return (
         <>
             <Center w='100%' h='400px' bgColor='#35b7be18'>

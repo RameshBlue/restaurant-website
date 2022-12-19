@@ -12,10 +12,6 @@ function NavbarProvider({children}) {
 
     useEffect(()=>{
 
-        if (localStorage.getItem('navLinkIndex')) {
-            SetNavbarLinkIndex(JSON.parse(localStorage.getItem('navLinkIndex')))
-        }
-
          if (localStorage.getItem('cartItems')) {
             SetCartItems(JSON.parse(localStorage.getItem('cartItems')))
         }

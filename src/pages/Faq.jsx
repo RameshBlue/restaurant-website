@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
     Flex, Center, Image, Heading, Text, SimpleGrid, Box, Accordion, AccordionItem, AccordionButton,
     AccordionPanel, AccordionIcon,
@@ -6,7 +6,16 @@ import {
 import { colors } from "../utils/Utils"
 import { motion } from 'framer-motion'
 
+import { useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
+
 function Faq() {
+
+    const { setNavbarLinkIndex } = useContext(NavbarContext);
+
+    useEffect(()=>{
+        setNavbarLinkIndex(3);
+    },[])
 
     const AccordianData = ["Do you offer any vegan options?", "Do you offer any gluten free options?", "Can I clone these sections?", "Why is Webflow so amazing?", "Do we need to write a business plan?", "How can we get funding for our start up?"]
 

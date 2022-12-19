@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Flex, Center, Image, Heading, Text, SimpleGrid, Box } from '@chakra-ui/react'
 import { Button } from '../styles/Button'
 import { colors } from "../utils/Utils"
 
+import { useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
+
 function Company() {
 
     const menuItemsCountArray = ["62", "139", "34", "57"]
+
+    const { setNavbarLinkIndex } = useContext(NavbarContext);
+
+    useEffect(()=>{
+        setNavbarLinkIndex(2);
+    },[])
 
     return (
         <>

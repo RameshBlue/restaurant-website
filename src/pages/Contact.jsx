@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { Flex, Heading, Text, Image, Stack, InputGroup, InputLeftElement, Input, Center, Textarea, useToast } from "@chakra-ui/react"
 import { Button } from '../styles/Button'
 
-import { MdEmail } from 'react-icons/md'
 import { IoMdContact } from 'react-icons/io'
 
-import emailjs from 'emailjs-com';
+import { useContext } from "react";
+import { NavbarContext } from "../context/NavbarContext";
 
 function Contact() {
 
@@ -17,6 +17,12 @@ function Contact() {
 
     const toast = useToast();
 
+    const { setNavbarLinkIndex } = useContext(NavbarContext);
+
+    useEffect(()=>{
+        setNavbarLinkIndex(4);
+    },[])
+
     useEffect(()=>{
         if (name.length!==0 && message.length!==0) {
             setisFieldsFilled(true);
@@ -26,21 +32,6 @@ function Contact() {
     },[name, message])
 
     const SendEmail = (evt)=>{
-        // emailjs.send("service_g3plejg","template_8w4r2kd",{
-        //     from_name: name,
-        //     to_name: 'Chomp',
-        //     message: message
-        // },'FPN7tEdahc_qW-vjA').then((result)=>{
-        //     toast({
-        //         title:'Success',
-        //         description: 'Message sent',
-        //         status: 'success',
-        //         duration: 2000,
-        //         isClosable: true,
-        //     })
-        // },(err)=>{
-        //     console.log(err.text);
-        // })
         evt.preventDefault();
         window.location = `mailto:rameshkrishnan109@gmail.com?subject=Mail from ${name}&body=${message}`;
     }

@@ -4,7 +4,7 @@ import { Link, Route, Router, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import {NavbarContext} from "./context/NavbarContext";
+import { NavbarContext } from "./context/NavbarContext";
 import Company from "./pages/Company";
 import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
@@ -13,33 +13,31 @@ import Order from "./pages/Order";
 
 function App() {
 
-  const {setNavbarLinkIndex} = useContext(NavbarContext);
+  const { setNavbarLinkIndex } = useContext(NavbarContext);
 
   const location = useLocation();
 
-  useEffect(()=>{
+  useEffect(() => {
 
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-  },[location])
+  }, [location])
 
   return (
     <>
       <TopOrderMessage>
         We're open and available for takeaway & delivery.
-        <Link to="/order" className="order-link" onClick={()=>{
-          setNavbarLinkIndex(1);
-        }}>  Order Now</Link>
+        <Link to="/order" className="order-link">  Order Now</Link>
         <div></div>
       </TopOrderMessage>
       <Navbar />
       <Routes>
-        <Route path = '/' element = {<Home />} />
-        <Route path = '/order' element = {<Order />} />
-        <Route path = '/company' element = {<Company />} />
-        <Route path = '/faq' element = {<Faq />} />
-        <Route path = '/contact' element = {<Contact />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/order' element={<Order />} />
+        <Route path='/company' element={<Company />} />
+        <Route path='/faq' element={<Faq />} />
+        <Route path='/contact' element={<Contact />} />
         {/* <Order /> */}
       </Routes>
       <Footer />

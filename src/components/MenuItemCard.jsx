@@ -11,19 +11,6 @@ function MenuItemCard(props) {
 
     const [quantity, setQuantity] = useState(0);
 
-    const [inputValue, setinputValue] = useState("0")
-
-    const ClampInputValue = (value) => {
-        let numberValue = "0";
-        if (value != "") {
-            numberValue = parseInt(value);
-            if (numberValue > 10) {
-                numberValue = 10;
-            }
-        }
-        return numberValue;
-    }
-
     return (
         <Flex p='20px' direction={{ base: 'column', md: 'row' }} bgColor='white' shadow='md' gap='30px' cursor='pointer' borderRadius='10px' border='1px solid' borderColor='blackAlpha.100'>
             <Image boxSize={{ base: '100%', md: '130px' }} src={props.image} borderRadius='15px' />
@@ -34,10 +21,16 @@ function MenuItemCard(props) {
                 </Flex>
                 <Text color='gray.600'>{props.description}</Text>
                 <Flex gap='8px'>
-                    <NumberInput defaultValue={0} min={0} max={10} value={inputValue} w='80px' onChange={(value) => {
-                        let clampedValue = ClampInputValue(value);
-                        setinputValue(clampedValue);
-                        setQuantity(parseInt(clampedValue));
+                    <NumberInput defaultValue={0} min={0} w='80px' value={quantity} onChange={(value) => {
+                        if (value == "") {
+                            setQuantity(0);
+                        }else{
+                            setQuantity(parseInt(value));
+                        }
+                    }} onBlur={(e)=>{
+                        if (e.target.value == "") {
+                            setQuantity(0);
+                        }
                     }}>
                         <NumberInputField />
                         <NumberInputStepper>

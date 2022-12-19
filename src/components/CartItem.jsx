@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 function CartItem({ image, title, price, quantity }) {
 
-    const { RemoveCartItem, SetExistingItemQuantity} = useContext(NavbarContext);
+    const { RemoveCartItem, SetExistingItemQuantity } = useContext(NavbarContext);
 
 
     console.log("cart enter");
@@ -20,10 +20,22 @@ function CartItem({ image, title, price, quantity }) {
                     <Text>${(price * quantity).toFixed(2)}</Text>
                     <Text color='red.500' cursor='pointer' onClick={() => { RemoveCartItem(title) }}>Remove</Text>
                 </Flex>
-                <NumberInput max={10} min={1} w='80px' h='60%' defaultValue={quantity} onChange={(value) => { SetExistingItemQuantity({
-                    name: title,
-                    quantity: parseInt(value)
-                })}}>
+                <NumberInput w='80px' h='60%' defaultValue={quantity} value={quantity} min={0} onChange={(value) => {
+                    if (value == "") {
+                        SetExistingItemQuantity({
+                            name: title,
+                            quantity: 0
+                        }
+                        )
+                    } else {
+                        SetExistingItemQuantity({
+                            name: title,
+                            quantity: parseInt(value)
+                        }
+                        )
+                    }
+                }
+                }>
                     <NumberInputField />
                     <NumberInputStepper>
                         <NumberIncrementStepper />
